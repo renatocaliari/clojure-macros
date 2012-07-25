@@ -1,3 +1,8 @@
+(defn wrap [f1 f2]
+  (fn [data]
+    (when (f1 data)
+      (f2 data))))
+
 (defmacro defchain [name functions]
   "create a chain of calls among functions inside 'functions' vector.
    it will stop at the first function that isn't able to handle the value.
